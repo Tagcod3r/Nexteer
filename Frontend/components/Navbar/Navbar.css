@@ -1,0 +1,63 @@
+.custom-navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(217, 4, 41, 0.08);
+  padding: 12px 0;
+  transition: all 0.3s ease-in-out;
+  font-family: "Poppins", sans-serif;
+}
+
+.brand {
+  color: #d90429 !important;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+}
+
+.brand:hover {
+  color: #b90321 !important;
+  text-decoration: none;
+}
+
+.nav-link-custom {
+  color: #333 !important;
+  font-weight: 500;
+  margin-left: 20px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.nav-link-custom:hover {
+  color: #d90429 !important;
+}
+
+.login-btn,
+.logout-btn {
+  border: 1.5px solid #d90429;
+  border-radius: 8px;
+  padding: 6px 16px !important;
+  margin-left: 25px;
+  color: #d90429 !important;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.login-btn:hover,
+.logout-btn:hover {
+  background-color: #d90429 !important;
+  color: #fff !important;
+}
+
+@media (max-width: 991px) {
+  .nav-link-custom {
+    margin-left: 0;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .login-btn,
+  .logout-btn {
+    display: block;
+    margin: 10px auto;
+    width: 80%;
+  }
+}

@@ -1,0 +1,63 @@
+.home-section {
+  position: relative;
+  height: 100vh;
+  background: url("https://maps.gstatic.com/tactile/basepage/pegman_sherlock.png") no-repeat center center/cover;
+  background-color: #f8f9fa;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #222;
+}
+
+.brand {
+  color: #d90429;
+}
+
+.input-group {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.input-group-text {
+  border: none;
+  font-size: 1.2rem;
+}
+
+.form-control-lg {
+  border: none;
+  font-size: 1.1rem;
+  padding: 1rem;
+}
+
+.find-btn {
+  border: none;
+  background-color: #d90429;
+  border-radius: 12px;
+  transition: 0.3s ease;
+}
+
+.find-btn:hover {
+  background-color: #b90321;
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+    padding: 0 1rem;
+  }
+
+  .find-btn {
+    width: 80%;
+  }
+}

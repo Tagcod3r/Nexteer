@@ -1,5 +1,3 @@
-// scan hackathon\Frontend\components\Authorization_Authentication\Login.jsx
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -60,59 +58,60 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div className="auth-container_2080">
-      <h2>Login</h2>
-      {error && <p className="error_2080">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className="form-group_2080">
-          <label>Email</label>
-          <input 
-            type="email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            required 
-            autoComplete="email"
-          />
-        </div>
-        <div className="form-group_2080">
-          <label>Password</label>
-          <div className="input-wrapper_2080">
-            <input
-              type={showPassword ? 'text' : 'password'}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              autoComplete="current-password"
+    <div className="auth-page-container">
+      <div className="auth-container_2080">
+        <h2>Login</h2>
+        {error && <p className="error_2080">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <div className="form-group_2080">
+            <label>Email</label>
+            <input 
+              type="email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required 
+              autoComplete="email"
             />
-            <span 
-              className="toggle-password_2080" 
-              onClick={() => setShowPassword(!showPassword)}
-              role="button"
-              tabIndex="0"
-              aria-label={showPassword ? 'Hide password' : 'Show password'}
-            >
-              {showPassword ? '👁️' : '👁️‍🗨️'}
-            </span>
           </div>
-        </div>
-        <button 
-          type="submit" 
-          className="auth-btn_2080" 
-          disabled={isLoading}
-        >
-          {isLoading ? <div className="loading-spinner_2080"></div> : 'Login'}
-        </button>
-      </form>
-      <p>
-        Don't have an account?{' '}
-        <button 
-          onClick={handleSignupClick} 
-          className="auth-link_2080"
-          type="button"
-        >
-          Sign Up
-        </button>
-      </p>
+          <div className="form-group_2080">
+            <label>Password</label>
+            <div className="input-wrapper_2080">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                autoComplete="current-password"
+              />
+              <button 
+                type="button"
+                className="toggle-password_2080" 
+                onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? '👁️' : '👁️‍🗨️'}
+              </button>
+            </div>
+          </div>
+          <button 
+            type="submit" 
+            className="auth-btn_2080" 
+            disabled={isLoading}
+          >
+            {isLoading ? <div className="loading-spinner_2080"></div> : 'Login'}
+          </button>
+        </form>
+        <p>
+          Don't have an account?{' '}
+          <button 
+            onClick={handleSignupClick} 
+            className="auth-link_2080"
+            type="button"
+          >
+            Sign Up
+          </button>
+        </p>
+      </div>
     </div>
   );
 };

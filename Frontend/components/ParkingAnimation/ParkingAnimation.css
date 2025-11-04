@@ -1,0 +1,254 @@
+.parking-animation-section {
+  padding: 120px 0;
+  background: #fff;
+  position: relative;
+}
+
+.animation-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Left Side - Minimal Timeline Flow */
+.ai-process-flow {
+  position: relative;
+}
+
+.ai-process-flow::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: -20px;
+  bottom: -20px;
+  width: 2px;
+  background: linear-gradient(
+    180deg, 
+    transparent 0%, 
+    #d90429 20%, 
+    #d90429 80%, 
+    transparent 100%
+  );
+  border-radius: 1px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInLine 1s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInLine {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.process-step {
+  position: relative;
+  padding: 0;
+  background: transparent;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s ease;
+}
+
+.process-step.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.step-marker {
+  position: absolute;
+  left: 8px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  background: #d90429;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.4s ease 0.2s;
+}
+
+.process-step.visible .step-marker {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.step-content {
+  padding-left: 45px;
+}
+
+.step-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.2px;
+}
+
+.step-description {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Right Side - Big Lottie */
+.animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.animation-container dotlottie-react {
+  width: 100% !important;
+  height: 600px !important;
+  max-width: 700px !important;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+}
+
+/* Scroll Animation */
+.process-step:nth-child(1) { transition-delay: 0.1s; }
+.process-step:nth-child(2) { transition-delay: 0.2s; }
+.process-step:nth-child(3) { transition-delay: 0.3s; }
+.process-step:nth-child(4) { transition-delay: 0.4s; }
+
+/* Mobile Responsive Design */
+@media (max-width: 1200px) {
+  .animation-content {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
+  }
+  
+  .ai-process-flow::before {
+    display: none; /* Hide line on mobile */
+  }
+  
+  .process-steps {
+    gap: 40px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .step-content {
+    padding-left: 0;
+    padding-top: 0; /* Remove top padding */
+  }
+  
+  .step-marker {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: inline-block;
+    margin-bottom: 15px;
+    transform: scale(0);
+  }
+  
+  .process-step.visible .step-marker {
+    transform: scale(1);
+  }
+  
+  .animation-container {
+    order: -1; /* Move Lottie to top on mobile */
+  }
+  
+  .animation-container dotlottie-react {
+    height: 400px !important;
+    max-width: 500px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .parking-animation-section {
+    padding: 60px 0;
+  }
+  
+  .animation-content {
+    gap: 50px;
+    padding: 0 15px;
+  }
+  
+  .process-steps {
+    gap: 35px;
+  }
+  
+  .step-title {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+  
+  .step-description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  
+  .animation-container dotlottie-react {
+    height: 350px !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .parking-animation-section {
+    padding: 50px 0;
+  }
+  
+  .animation-content {
+    gap: 40px;
+  }
+  
+  .process-steps {
+    gap: 30px;
+  }
+  
+  .step-marker {
+    width: 14px;
+    height: 14px;
+    margin-bottom: 12px;
+  }
+  
+  .animation-container dotlottie-react {
+    height: 280px !important;
+    margin-bottom: 20px;
+  }
+  
+  .step-title {
+    font-size: 0.95rem;
+  }
+  
+  .step-description {
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .animation-container dotlottie-react {
+    height: 250px !important;
+  }
+  
+  .process-steps {
+    gap: 25px;
+  }
+  
+  .step-title {
+    font-size: 0.9rem;
+  }
+  
+  .step-description {
+    font-size: 0.78rem;
+  }
+}

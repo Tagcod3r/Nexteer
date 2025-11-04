@@ -50,74 +50,77 @@ const Signup = () => {
   };
 
   return (
-    <div className="auth-container-small_2080">
-      <h2>Signup</h2>
-      {error && <p className="error_2080">{error}</p>}
-      {success && <p className="success_2080">{success}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className="form-group_2080">
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group_2080">
-          <label>Password</label>
-          <div className="input-wrapper_2080">
-            <input
-              type={showPassword ? 'text' : 'password'}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <span
-              className="toggle-password_2080"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? '👁️' : '👁️‍🗨️'}
-            </span>
-          </div>
-        </div>
-        <div className="form-group_2080">
-          <label>Confirm Password</label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group_2080">
-          <label>Role</label>
-          <select value={role} onChange={(e) => setRole(e.target.value)}>
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-          </select>
-        </div>
-        {role === 'admin' && (
+    <div className="auth-page-container">
+      <div className="auth-container-small_2080">
+        <h2>Signup</h2>
+        {error && <p className="error_2080">{error}</p>}
+        {success && <p className="success_2080">{success}</p>}
+        <form onSubmit={handleSubmit}>
           <div className="form-group_2080">
-            <label>Admin Code</label>
+            <label>Email</label>
             <input
-              type="text"
-              value={adminCode}
-              onChange={(e) => setAdminCode(e.target.value)}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
-        )}
-        <button type="submit" className="auth-btn_2080" disabled={isLoading}>
-          {isLoading ? <div className="loading-spinner_2080"></div> : 'Signup'}
-        </button>
-      </form>
-      <p>
-        Already have an account?{' '}
-        <button onClick={handleLoginClick} className="auth-link_2080">
-          Log In
-        </button>
-      </p>
+          <div className="form-group_2080">
+            <label>Password</label>
+            <div className="input-wrapper_2080">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button
+                type="button"
+                className="toggle-password_2080"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? '👁️' : '👁️‍🗨️'}
+              </button>
+            </div>
+          </div>
+          <div className="form-group_2080">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group_2080">
+            <label>Role</label>
+            <select value={role} onChange={(e) => setRole(e.target.value)}>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          {role === 'admin' && (
+            <div className="form-group_2080">
+              <label>Admin Code</label>
+              <input
+                type="text"
+                value={adminCode}
+                onChange={(e) => setAdminCode(e.target.value)}
+                required
+              />
+            </div>
+          )}
+          <button type="submit" className="auth-btn_2080" disabled={isLoading}>
+            {isLoading ? <div className="loading-spinner_2080"></div> : 'Signup'}
+          </button>
+        </form>
+        <p>
+          Already have an account?{' '}
+          <button onClick={handleLoginClick} className="auth-link_2080">
+            Log In
+          </button>
+        </p>
+      </div>
     </div>
   );
 };

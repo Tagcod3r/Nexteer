@@ -6,7 +6,7 @@ const services = [
   {
     title: "Find Your Sweet Spot",
     desc: "Discover the nearest and most suitable parking zones based on your destination and time preferences.",
-    icon: "🎯",
+    icon: "📍",
   },
   {
     title: "Book Instantly",
@@ -22,21 +22,27 @@ const services = [
 
 export default function Features() {
   return (
-    <section id="features" className="services-section py-5">
+    <section id="features" className="services-section">
       <Container>
-        <div className="section-header mb-5">
-          <h2 className="fw-bold">Our Services</h2>
+        <div className="section-header">
+          <h2>Our Services</h2>
           <div className="underline"></div>
         </div>
 
-        <Row className="justify-content-center">
+        <Row className="g-4 justify-content-center">
           {services.map((service, idx) => (
-            <Col key={idx} md={4} sm={10} className="mb-4">
-              <Card className="service-card mx-auto text-center">
-                <div className="icon-box">{service.icon}</div>
-                <Card.Body>
-                  <Card.Title className="fw-bold">{service.title}</Card.Title>
-                  <Card.Text>{service.desc}</Card.Text>
+            <Col key={idx} lg={4} md={6} className="d-flex">
+              <Card className="service-card text-center">
+                <div className="icon-box">
+                  {service.icon}
+                </div>
+                <Card.Body className="p-0">
+                  <Card.Title as="h5" className="fw-semibold">
+                    {service.title}
+                  </Card.Title>
+                  <Card.Text>
+                    {service.desc}
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>

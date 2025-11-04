@@ -1,0 +1,18 @@
+.hero-section {
+  background: linear-gradient(to right, #b31217, #e52d27);
+  height: 100vh;
+}
+
+.home-content-section {
+  background: linear-gradient(135deg, #0d1b2a, #1b263b);
+  color: white;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  color: white;
+}

@@ -1,75 +1,66 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
-import "./Home.css";
+import { Container, Button, Form } from "react-bootstrap";
+import ParkingRouteToDestination from "../map/Map";
 
 export default function Home() {
-  const [source, setSource] = useState("");
-  const [destination, setDestination] = useState("");
+    const [destination, setDestination] = useState("mantri");
+    const [showMap, setShowMap] = useState(false);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setShowMap(true);
+    };
 
-    if (source.trim() === "" || destination.trim() === "") {
-      alert("Please enter both source and destination areas");
-      return;
-    }
+    return (
+        <section className="home-section">
+            <div className="overlay">
+                <Container className="text-center d-flex flex-column justify-content-center align-items-center h-100">
+                    <h1 className="title fw-bold mb-4">
+                        Find Parking Smarter with{" "}
+                        <span className="brand">Nexteer</span>
+                    </h1>
 
-    console.log("Source:", source);
-    console.log("Destination:", destination);
-    // Later: redirect to login or map page
-  };
+                    <Form onSubmit={handleSubmit} className="search-box w-100">
+                        <Form.Group className="mb-3 w-50 mx-auto">
+                            <Form.Label>Select Destination</Form.Label>
+                            <Form.Select
+                                value={destination}
+                                onChange={(e) => setDestination(e.target.value)}
+                            >
+                                <option value="mantri">Mantri Mall</option>
+                                <option value="orion">Orion Mall</option>
+                            </Form.Select>
+                        </Form.Group>
 
-  return (
-    <section className="home-section">
-      <div className="overlay">
-        <Container className="text-center d-flex flex-column justify-content-center align-items-center h-100">
-          <h1 className="title fw-bold mb-4">
-            Find Parking Smarter with <span className="brand">Nexteer</span>
-          </h1>
+                        <Button
+                            type="submit"
+                            className="find-btn fw-bold mt-4 px-5 py-3"
+                            variant="danger"
+                        >
+                            Find Parking
+                        </Button>
+                    </Form>
 
-          <Form onSubmit={handleSearch} className="search-box w-100">
-            <Row className="justify-content-center">
-              <Col xs={10} sm={8} md={6} lg={5}>
-                {/* Source Input */}
-                <div className="input-group shadow mb-3">
-                  <span className="input-group-text bg-white">
-                    <i className="bi bi-geo-alt text-danger"></i>
-                  </span>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter Source Address"
-                    value={source}
-                    onChange={(e) => setSource(e.target.value)}
-                    className="form-control-lg"
-                  />
-                </div>
-
-                {/* Destination Input */}
-                <div className="input-group shadow">
-                  <span className="input-group-text bg-white">
-                    <i className="bi bi-geo text-danger"></i>
-                  </span>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter Destination / Area"
-                    value={destination}
-                    onChange={(e) => setDestination(e.target.value)}
-                    className="form-control-lg"
-                  />
-                </div>
-              </Col>
-            </Row>
-
-            <Button
-              type="submit"
-              className="find-btn fw-bold mt-4 px-5 py-3"
-              variant="danger"
-            >
-              Find Parking
-            </Button>
-          </Form>
-        </Container>
-      </div>
-    </section>
-  );
+                    {showMap && (
+                        <div
+                            style={{
+                                width: "85%",
+                                maxWidth: "1200px",
+                                height: "500px",
+                                margin: "40px auto",
+                                borderRadius: "20px",
+                                overflow: "hidden",
+                                boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+                                border: "2px solid #ddd",
+                            }}
+                        >
+                            <ParkingRouteToDestination
+                                selectedDestination={destination}
+                            />
+                        </div>
+                    )}
+                </Container>
+            </div>
+        </section>
+    );
 }

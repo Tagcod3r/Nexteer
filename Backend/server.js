@@ -10,17 +10,20 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors({
-  origin: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-}));
+app.use(
+    cors({
+        origin: true,
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+    })
+);
 app.use(express.static(path.join(__dirname, "public")));
 
 // Import route modules
 const authRoutes = require("./routes/auth");
 const eventRoutes = require("./routes/events");
 const noticeRoutes = require("./routes/notices");
+const parkingRoutes = require("./routes/parking");
 
 // Mount routes
 app.use("/auth", authRoutes);
@@ -28,16 +31,17 @@ app.use("/events", eventRoutes);
 app.use("/notices", noticeRoutes);
 
 app.get("/", (req, res) => {
-  console.log("Backend connected");
-  res.send("Backend is connected");
+    console.log("Backend connected");
+    res.send("Backend is connected");
 });
+app.use("/parking", parkingRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-  console.error("Server error:", err.stack);
-  res.status(500).json({ message: "Internal Server Error" });
+    console.error("Server error:", err.stack);
+    res.status(500).json({ message: "Internal Server Error" });
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });

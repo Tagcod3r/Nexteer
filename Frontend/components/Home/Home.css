@@ -1,23 +1,29 @@
 .home-section {
   position: relative;
   height: 100vh;
-  background: url("https://maps.gstatic.com/tactile/basepage/pegman_sherlock.png")
-    no-repeat center center / cover;
-  background-color: #f8f9fa;
+  background: url("../../public/home_bg.avif") no-repeat center center/cover;
+
+}
+
+.home-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  /* use same background */
+  filter: blur(2px) brightness(0.8);
+  transform: scale(1.05);
+  /* avoid edge blur clipping */
+  z-index: 0;
 }
 
 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  z-index: 1;
   height: 100%;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.92);
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  padding: 0 1rem;
+  justify-content: center;
 }
 
 .title {
@@ -169,5 +175,79 @@
 
   .map-preview {
     height: 350px;
+  }
+}
+
+/* Section for map below hero */
+.map-display-section {
+  background: #f8f9fa;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  /* stack items vertically */
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  gap: 30px;
+  /* space between map and buttons/info */
+}
+
+/* Smooth fade-in */
+.map-display-section.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Map container */
+.map-preview {
+  width: 100%;
+  max-width: 1200px;
+  height: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ddd;
+  margin: 0 auto;
+}
+
+/* Buttons container below map */
+.map-display-section .buttons-container {
+  display: flex;
+  flex-direction: column;
+  /* stack buttons vertically */
+  align-items: center;
+  gap: 15px;
+  /* space between buttons */
+}
+
+.map-display-section .buttons-container button {
+  min-width: 200px;
+}
+
+/* Booked spot & amount info */
+.map-display-section .info-box {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .map-display-section {
+    padding: 40px 0;
+  }
+
+  .map-preview {
+    height: 350px;
+  }
+
+  .map-display-section .buttons-container button {
+    width: 100%;
   }
 }

@@ -98,14 +98,16 @@ export default function Home() {
         }
     };
 
-    return (
-        <section className="home-section">
-            <div className="overlay">
-                <Container className="text-center d-flex flex-column justify-content-center align-items-center h-100">
-                    <h1 className="title fw-bold mb-4">
-                        Find Parking Smarter with{" "}
-                        <span className="brand">Nexteer</span>
-                    </h1>
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="home-section">
+        <div className="overlay">
+          <Container className="text-center d-flex flex-column justify-content-center align-items-center h-100">
+            <h1 className="title fw-bold mb-4">
+              Find Parking Smarter with{" "}
+              <span className="brand">Nexteer</span>
+            </h1>
 
                     {/* Step 1: Find parking */}
                     <Form onSubmit={handleSubmit} className="search-box w-100">
@@ -120,14 +122,17 @@ export default function Home() {
                             </Form.Select>
                         </Form.Group>
 
-                        <Button
-                            type="submit"
-                            className="find-btn fw-bold mt-4 px-5 py-3"
-                            variant="danger"
-                        >
-                            Find Parking
-                        </Button>
-                    </Form>
+              <Button
+                type="submit"
+                className="find-btn fw-bold mt-3 px-5 py-3"
+                variant="danger"
+              >
+                Find Parking
+              </Button>
+            </Form>
+          </Container>
+        </div>
+      </section>
 
                     {/* Step 2: Show map after finding parking */}
                     {showMap && (
@@ -212,6 +217,9 @@ export default function Home() {
                     )}
                 </Container>
             </div>
+          </Container>
         </section>
-    );
+      )}
+    </>
+  );
 }

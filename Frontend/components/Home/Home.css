@@ -1,7 +1,8 @@
 .home-section {
   position: relative;
   height: 100vh;
-  background: url("https://maps.gstatic.com/tactile/basepage/pegman_sherlock.png") no-repeat center center/cover;
+  background: url("https://maps.gstatic.com/tactile/basepage/pegman_sherlock.png")
+    no-repeat center center / cover;
   background-color: #f8f9fa;
 }
 
@@ -11,53 +12,162 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 1rem;
 }
 
 .title {
-  font-size: 2.5rem;
-  color: #222;
+  font-size: 3rem;
+  color: #111;
+  line-height: 1.3;
 }
 
 .brand {
-  color: #d90429;
+  color: #dc3545;
+  font-weight: 900;
+  font-size: 3.3rem;
 }
 
-.input-group {
-  border-radius: 10px;
-  overflow: hidden;
+.search-box {
+  width: 100%;
+  max-width: 550px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  margin-top: 1.5rem;
 }
 
-.input-group-text {
-  border: none;
-  font-size: 1.2rem;
-}
-
-.form-control-lg {
-  border: none;
+.search-group label {
   font-size: 1.1rem;
-  padding: 1rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.search-select {
+  font-size: 1rem;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
 }
 
 .find-btn {
   border: none;
-  background-color: #d90429;
+  background-color: #dc3545;
   border-radius: 12px;
   transition: 0.3s ease;
+  font-size: 1.2rem;
+  width: 80%;
+  max-width: 320px;
 }
 
 .find-btn:hover {
-  background-color: #b90321;
+  background-color: #b31217;
   transform: scale(1.03);
+}
+
+.map-preview {
+  width: 85%;
+  max-width: 1200px;
+  height: 500px;
+  margin: 40px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ddd;
 }
 
 @media (max-width: 768px) {
   .title {
-    font-size: 1.8rem;
-    padding: 0 1rem;
+    font-size: 2rem;
+  }
+
+  .brand {
+    font-size: 2.4rem;
+  }
+
+  .search-box {
+    max-width: 90%;
+    padding: 20px;
   }
 
   .find-btn {
-    width: 80%;
+    width: 100%;
+  }
+
+  .map-preview {
+    height: 350px;
+  }
+}
+
+/* Section for map below hero */
+.map-display-section {
+  background: #f8f9fa;
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-preview {
+  width: 100%;
+  max-width: 1200px;
+  height: 500px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ddd;
+}
+
+@media (max-width: 768px) {
+  .map-display-section {
+    padding: 40px 0;
+  }
+
+  .map-preview {
+    height: 350px;
+  }
+}
+
+/* Smooth fade-in for map section */
+.map-display-section {
+  background: #f8f9fa;
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.map-display-section.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.map-preview {
+  width: 100%;
+  max-width: 1200px;
+  height: 500px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ddd;
+}
+
+@media (max-width: 768px) {
+  .map-display-section {
+    padding: 40px 0;
+  }
+
+  .map-preview {
+    height: 350px;
   }
 }

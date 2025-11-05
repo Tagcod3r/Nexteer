@@ -3,7 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import AppNavbar from "../components/Navbar/Navbar";
 import Home from "../components/Home/Home";
 import Features from "../components/Features/Features";
-import HowItWorks from "../components/HowItWorks/HowItWorks"; // ✅ New import
+import HowItWorks from "../components/HowItWorks/HowItWorks";
+import ParkingAnimation from "../components/ParkingAnimation/ParkingAnimation"; // ✅ New import
 import Footer from "../components/Footer/Footer";
 import Login from "../components/Authorization_Authentication/Login";
 import Signup from "../components/Authorization_Authentication/Signup";
@@ -41,8 +42,8 @@ export default function App() {
                         <>
                             <Home />
                             <Features />
-                            {/* ✅ New section added below Our Services */}
                             <HowItWorks />
+                            <ParkingAnimation /> {/* ✅ Added after HowItWorks */}
                         </>
                     }
                 />

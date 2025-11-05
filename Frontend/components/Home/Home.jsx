@@ -13,13 +13,11 @@ export default function Home() {
     const [error, setError] = useState("");
     const [amount, setAmount] = useState(null);
 
-    // Check login status on mount
     useEffect(() => {
         const token = localStorage.getItem("token");
         setIsLoggedIn(!!token);
     }, []);
 
-    // Show map when user clicks "Find Parking"
     const handleSubmit = (e) => {
         e.preventDefault();
         setShowMap(true);
@@ -28,7 +26,6 @@ export default function Home() {
         setAmount(null);
     };
 
-    // Book parking spot via API
     const handleBookSpot = async () => {
         setIsLoading(true);
         setError("");
@@ -43,7 +40,7 @@ export default function Home() {
                 return;
             }
 
-            const userId = localStorage.getItem("userId"); // assume stored on login
+            const userId = localStorage.getItem("userId");
             if (!userId) {
                 setError("User ID not found.");
                 setIsLoading(false);
@@ -67,7 +64,6 @@ export default function Home() {
         }
     };
 
-    // Leave parking via API
     const handleLeave = async () => {
         setIsLoading(true);
         setError("");
@@ -98,16 +94,14 @@ export default function Home() {
         }
     };
 
-  return (
-    <>
-      {/* Hero Section */}
-      <section className="home-section">
-        <div className="overlay">
-          <Container className="text-center d-flex flex-column justify-content-center align-items-center h-100">
-            <h1 className="title fw-bold mb-4">
-              Find Parking Smarter with{" "}
-              <span className="brand">Nexteer</span>
-            </h1>
+    return (
+        <section className="home-section">
+            <div className="overlay">
+                <Container className="text-center d-flex flex-column justify-content-center align-items-center h-100">
+                    <h1 className="title fw-bold mb-4">
+                        Find Parking Smarter with{" "}
+                        <span className="brand">Nexteer</span>
+                    </h1>
 
                     {/* Step 1: Find parking */}
                     <Form onSubmit={handleSubmit} className="search-box w-100">
@@ -122,17 +116,14 @@ export default function Home() {
                             </Form.Select>
                         </Form.Group>
 
-              <Button
-                type="submit"
-                className="find-btn fw-bold mt-3 px-5 py-3"
-                variant="danger"
-              >
-                Find Parking
-              </Button>
-            </Form>
-          </Container>
-        </div>
-      </section>
+                        <Button
+                            type="submit"
+                            className="find-btn fw-bold mt-3 px-5 py-3"
+                            variant="danger"
+                        >
+                            Find Parking
+                        </Button>
+                    </Form>
 
                     {/* Step 2: Show map after finding parking */}
                     {showMap && (
@@ -204,7 +195,6 @@ export default function Home() {
                         </div>
                     )}
 
-                    {/* Show amount after leaving */}
                     {amount !== null && (
                         <div
                             className="mt-4 p-3 rounded bg-light border border-success"
@@ -217,9 +207,6 @@ export default function Home() {
                     )}
                 </Container>
             </div>
-          </Container>
         </section>
-      )}
-    </>
-  );
+    );
 }
